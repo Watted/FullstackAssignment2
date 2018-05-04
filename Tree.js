@@ -38,7 +38,35 @@ class Tree {
         return childToRemove;
     }
 
+    flatting(traversal){
+        var tree = this,
+            parent = null,
+            childToRemove = null,
+            index;
 
+        var callback = function(node) {
+            if (node instanceof User){
+
+            }else {
+                parent = node;
+            }
+        };
+
+        this.contains(callback, traversal);
+
+        if (parent) {
+            var children = parent.getChildren();
+            var dataOfParent = parent.getParent();
+            this.remove(parent.getNameOfData(),parent.getNameOfParent(),this.traverseBF);
+            for (var i =0; i<children.length;i++){
+                dataOfParent.setChild(children[i]);
+            }
+
+        } else {
+            throw new Error('Parent does not exist.');
+        }
+
+    }
 
 
     addUserToGroup(user,nameOfGroup,traversal){
@@ -155,8 +183,12 @@ class Tree {
             index;
 
         var callback = function(node) {
-            if (node.getNameOfData() === fromData) {
-                parent = node;
+            if (node instanceof User){
+
+            } else {
+                if (node.getNameOfData() === fromData) {
+                    parent = node;
+                }
             }
         };
 

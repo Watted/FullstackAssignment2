@@ -10,6 +10,7 @@ class User {
         return this.username;
     }
 
+
     getAge() {
         return this.age;
     }

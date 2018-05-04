@@ -8,6 +8,7 @@ class Group {
         return this.nameOfGroup;
     }
 
+
     setGroupName(name) {
         this.nameOfGroup = name;
     }

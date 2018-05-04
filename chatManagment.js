@@ -50,7 +50,7 @@ function menuOptions(){
                 removeUserFromGroup();
                 break;
             case 9:
-                printGroupUsers();
+                flatteningGroupUsers();
                 break;
             case 10:
                 updateUserOption();
@@ -61,6 +61,36 @@ function menuOptions(){
                 break;
         }
     }
+}
+
+function updateUserOption() {
+    var username,age,password;
+    r1.question('input the username that you want to change it: ',updateUser);
+    function updateUser(input) {
+        username = input;
+        if (users.checkIfExist(username)){
+            r1.question('input a new password to change it: ', updatePassword);
+        }
+        else {
+            console.log("the name name doesn't exist!\n");
+            menuOptions();
+        }
+    }
+    function updatePassword(input) {
+        password = input;
+        r1.question('input your age: ',updateAge);
+    }
+    function updateAge(input) {
+        age = input;
+        users.updateUser(username,password,age);
+        menuOptions();
+    }
+
+}
+
+function flatteningGroupUsers() {
+    groups.flatting(groups.traverseBF);
+    menuOptions();
 }
 
 function removeUserFromGroup() {

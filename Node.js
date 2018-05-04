@@ -7,7 +7,12 @@ class Node {
         this.parent = null;
         this.children = [];
     }
-
+    getNameOfParent(){
+        return this.parent.data.getName();
+    }
+    getParent(){
+        return this.parent;
+    }
     getData()
     {
         return this.data;
