@@ -192,6 +192,7 @@ class Tree {
             }
         };
 
+
         this.contains(callback, traversal);
 
         if (parent) {

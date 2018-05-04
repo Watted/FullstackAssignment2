@@ -92,7 +92,6 @@ function flatteningGroupUsers() {
     groups.flatting(groups.traverseBF);
     menuOptions();
 }
-
 function removeUserFromGroup() {
     var nameOfGroup, username;
     r1.question('input the username to delete: ',removeUser);

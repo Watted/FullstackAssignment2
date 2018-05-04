@@ -40,7 +40,6 @@ class Users {
                 flag = 1;
             }
         }
-
         if (flag === 0) {
             this.users.push(user);
             console.log('name created\n');

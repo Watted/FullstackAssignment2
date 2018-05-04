@@ -10,6 +10,7 @@ class Node {
     getNameOfParent(){
         return this.parent.data.getName();
     }
+
     getParent(){
         return this.parent;
     }

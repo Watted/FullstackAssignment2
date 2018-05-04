@@ -26,7 +26,6 @@ class Queue {
 
             return deletedData;
         }
-
     }
 }
 module.exports = Queue;
