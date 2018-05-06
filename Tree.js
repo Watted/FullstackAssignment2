@@ -27,12 +27,12 @@ class Tree {
             index = this.findIndex(parent.getChildren(), data);
 
             if (index === undefined) {
-                throw new Error('Node to remove does not exist.');
+               console.log('User to remove does not exist in this group.');
             } else {
                 childToRemove = parent.removeChildren(index);
             }
         } else {
-            throw new Error('Parent does not exist.');
+            console.log('Group does not exist');
         }
 
         return childToRemove;
@@ -61,9 +61,6 @@ class Tree {
             for (var i =0; i<children.length;i++){
                 dataOfParent.setChild(children[i]);
             }
-
-        } else {
-            throw new Error('Parent does not exist.');
         }
 
     }
@@ -87,7 +84,7 @@ class Tree {
             }
                 parent.setChildUser(user);
         } else {
-            throw new Error('Cannot add node to a non-existent parent.');
+            console.log('Cannot add user to a non-existent group.');
         }
     }
 
@@ -116,9 +113,13 @@ class Tree {
         var child = new Node(data),
             parent = null,
             callback = function(node) {
+            if (node instanceof User){
+
+            }else {
                 if (node.getNameOfData() === toData) {
                     parent = node;
                 }
+            }
             };
 
         this.contains(callback, traversal);
@@ -127,7 +128,7 @@ class Tree {
             parent.setChild(child);
             child.setParent(parent);
         } else {
-            throw new Error('Cannot add node to a non-existent parent.');
+            console.log('Cannot add group to a non-existent group.');
         }
     }
     traverseDF(callback) {
@@ -199,12 +200,12 @@ class Tree {
             index = this.findIndex(parent.getChildren(), data);
 
             if (index === undefined) {
-                throw new Error('Node to remove does not exist.');
+                console.log('group to remove does not exist.');
             } else {
                 childToRemove = parent.removeChildren(index);
             }
         } else {
-            throw new Error('Parent does not exist.');
+            console.log('group does not exist.');
         }
 
         return childToRemove;

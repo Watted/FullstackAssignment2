@@ -17,7 +17,7 @@ menuOptions();
 function menuOptions(){
     r1.question('0) Enter 0 to exit\n1) Enter 1 to create a name\n2) Enter 2 to delete a name.\n3) Enter 3 to print the list of users\n' +
         '4) Enter 4 to create a group\n5) Enter 5 to delete a group\n6) Enter 6 to print the list of groups\n' +
-        '7) Enter 7 to add name to group\n8) Enter 8 to remove name from group\n9) Enter 9 to print all the users in the groups\n' +
+        '7) Enter 7 to add name to group\n8) Enter 8 to remove name from group\n9) Enter 9 to flattening all the group\n' +
         '10) Enter 10 to update name password and age\n', main);
     function main(input){
         choice = parseInt(input);
@@ -176,7 +176,7 @@ function deleteGroup() {
     function groupToDelete(input) {
         groupName = input;
         if (groups.getLength()>0){
-         r1.question('input another group that the first one exist under it: ',childGroup);
+         r1.question('input another group that the first one exist under it: ',parentGroup);
         } else {
             if (groups.checkTheRootIfExist(groupName)){
                 groups = null;
@@ -184,9 +184,9 @@ function deleteGroup() {
         }
         menuOptions();
     }
-    function childGroup(input) {
-        var child = input;
-        groups.remove(groupName,child,groups.traverseBF);
+    function parentGroup(input) {
+        var parent = input;
+        groups.remove(groupName,parent,groups.traverseBF);
         menuOptions();
     }
     
@@ -219,7 +219,7 @@ function printGroups() {
             if (node instanceof User) {
                 console.log(node.getName());
             }else {
-                console.log(node.getNameOfData());
+                console.log(node.getNameOfData()+' ('+node.getLength()+')');
             }
         });
     }else {
