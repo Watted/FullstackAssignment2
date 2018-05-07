@@ -176,7 +176,7 @@ function deleteGroup() {
     function groupToDelete(input) {
         groupName = input;
         if (groups.getLength()>0){
-         r1.question('input another group that the first one exist under it: ',parentGroup);
+            r1.question('input another group that the first one exist under it: ',parentGroup);
         } else {
             if (groups.checkTheRootIfExist(groupName)){
                 groups = null;
@@ -189,7 +189,7 @@ function deleteGroup() {
         groups.remove(groupName,parent,groups.traverseBF);
         menuOptions();
     }
-    
+
 }
 /////////////////////////////////////////////////////////
 function createGroup() {

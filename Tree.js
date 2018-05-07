@@ -27,7 +27,7 @@ class Tree {
             index = this.findIndex(parent.getChildren(), data);
 
             if (index === undefined) {
-               console.log('User to remove does not exist in this group.');
+                console.log('User to remove does not exist in this group.');
             } else {
                 childToRemove = parent.removeChildren(index);
             }
@@ -82,7 +82,7 @@ class Tree {
             if ( flag ===0 || flag===2){
                 parent = parent.getChildOthers();
             }
-                parent.setChildUser(user);
+            parent.setChildUser(user);
         } else {
             console.log('Cannot add user to a non-existent group.');
         }
@@ -113,20 +113,37 @@ class Tree {
         var child = new Node(data),
             parent = null,
             callback = function(node) {
-            if (node instanceof User){
+                if (node instanceof User){
 
-            }else {
-                if (node.getNameOfData() === toData) {
-                    parent = node;
+                }else {
+                    if (node.getNameOfData() === toData) {
+                        parent = node;
+                    }
                 }
-            }
             };
 
         this.contains(callback, traversal);
 
         if (parent) {
-            parent.setChild(child);
-            child.setParent(parent);
+            /////////
+            if (!parent.checkIfExist(child.getNameOfData())){
+                if ( !parent.checkIfUser()) {
+                    parent.setChild(child);
+                    child.setParent(parent);
+                }else {
+                    var children = parent.getChildren();
+                    parent.removeAllChildren();
+                    this.add("other", parent.getNameOfData(), this.traverseBF);
+                    parent.setChild(child);
+                    child.setParent(parent);
+                    parent = parent.getChildOthers();
+                    for (var i =0 ;i<children.length;i++) {
+                        parent.setChild(children[i]);
+                    }
+                }
+            }else {
+                console.log('Cannot add this group, There is group name like it.');
+            }
         } else {
             console.log('Cannot add group to a non-existent group.');
         }

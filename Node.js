@@ -30,6 +30,27 @@ class Node {
     setChild(child){
         this.children.push(child);
     }
+    checkIfExist(child){
+        if (child === this.data.getName()){
+            return true;
+        }
+        for (var i =0; i<this.children.length;i++){
+            if (!(this.children[i] instanceof User)) {
+                if (child === this.children[i].data.getName()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    checkIfUser(){
+        for (var i =0; i<this.children.length;i++){
+            if (this.children[i] instanceof User) {
+                return true;
+            }
+        }
+        return false;
+    }
     setChildUser(user){
         this.children.push(user);
     }
@@ -43,11 +64,17 @@ class Node {
     setParent(parent){
         this.parent = parent;
     }
+    setChildren(arr){
+        this.children = arr;
+    }
     getChildren(){
         return this.children;
     }
     removeChildren(index) {
         return this.children.splice(index, 1)
+    }
+    removeAllChildren(){
+        this.children = [];
     }
 
 }
